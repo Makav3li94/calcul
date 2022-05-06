@@ -14,21 +14,37 @@
                         <div class="card-body">
                             <div class="card-block">
 
-                                    <div class="table-responsive">
-                                        <table id="recent-orders" class="table table-hover table-xl mb-0">
-                                            <thead>
+                                <div class="table-responsive">
+                                    <table id="recent-orders" class="table table-hover table-xl mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th class="border-top-0">ردیف</th>
+                                            <th class="border-top-0">کل سرمایه</th>
+                                            <th class="border-top-0">قیمت خرید بیتکوین</th>
+                                            <th class="border-top-0">بازه پایین</th>
+                                            <th class="border-top-0">بازه بالا</th>
+                                            <th class="border-top-0">وضعیت</th>
+                                            <th class="border-top-0">مشاهده</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @forelse($invests as $key=>$invest)
                                             <tr>
-                                                <th class="border-top-0">وضعیت</th>
-                                                <th class="border-top-0">نام اثر</th>
-                                                <th class="border-top-0">دسته بندی</th>
-                                                <th class="border-top-0">عملیات</th>
+                                                <td>{{$key + 1}}</td>
+                                                <td>{{number_format($invest->budget)}}</td>
+                                                <td>{{number_format($invest->purchase_price)}}</td>
+                                                <td>{{number_format($invest->low_range)}}</td>
+                                                <td>{{number_format($invest->high_rang)}}</td>
+                                                <td>بخرید || بفروشید</td>
+                                                <td><a href="{{route('user.invest.show',$invest->id)}}"><i
+                                                            class="fa fa-eye"></i></a></td>
                                             </tr>
-                                            </thead>
-                                            <tbody>
+                                        @empty
 
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
 
                             </div>
 

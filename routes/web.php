@@ -26,7 +26,11 @@ Route::name('user.')->prefix('user')->middleware('auth')->group(function () {
     Route::get('dashboard', [\App\Http\Controllers\User\UserController::class, 'dashboard'])->name('dashboard');
     Route::get('profile', [\App\Http\Controllers\User\UserController::class, 'profile'])->name('profile');
 
-    Route::get('invest', [\App\Http\Controllers\User\UserController::class, 'invest'])->name('invest');
+    Route::get('invest/index', [\App\Http\Controllers\User\InvestController::class, 'index'])->name('invest.index');
+    Route::get('invest/create', [\App\Http\Controllers\User\InvestController::class, 'create'])->name('invest.create');
+    Route::post('invest/store', [\App\Http\Controllers\User\InvestController::class, 'store'])->name('invest.store');
+    Route::get('invest/{invest}', [\App\Http\Controllers\User\InvestController::class, 'show'])->name('invest.show');
+    Route::post('invest/update/{invest}/', [\App\Http\Controllers\User\InvestController::class, 'update'])->name('invest.update');
 });
 
 

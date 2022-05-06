@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invest;
 use App\Models\PreRegister;
 use App\Models\User;
 use App\Traits\Sms;
@@ -16,17 +17,17 @@ class UserController extends Controller
     public function dashboard()
     {
         $user = auth()->guard('web')->user();
-        return view('admin.dashboard', compact('user'));
+        $invests = Invest::where('user_id', $user->id)->get();
+
+        return view('admin.dashboard', compact('user','invests'));
     }
 
-    public function profile (){
+    public function profile()
+    {
         $user = auth()->guard('web')->user();
         return view('admin.profile.edit', compact('user'));
     }
 
-    public function invest(){
-        return view('admin.invest.create');
-    }
 
     public function resendCode(Request $request)
     {

@@ -12,9 +12,14 @@
                                 <i class="icon-home"></i><span data-i18n="" class="menu-title">داشبورد</span>
                             </a>
                         </li>
+                    <li class="{{ request()->is('user/invest/index') ? 'active' : '' }}  nav-item">
+                        <a href="{{route('user.invest.index')}}">
+                            <i class="icon-list"></i><span data-i18n="" class="menu-title">سرمایه گذاری ها</span>
+                        </a>
+                    </li>
 
-                    <li class="{{ request()->is('user/invest') ? 'active' : '' }}  nav-item">
-                        <a href="{{route('user.invest')}}">
+                    <li class="{{ request()->is('user/invest/create') ? 'active' : '' }}  nav-item">
+                        <a href="{{route('user.invest.create')}}">
                             <i class="icon-target"></i><span data-i18n="" class="menu-title">سرمایه گذاری جدید</span>
                         </a>
                     </li>

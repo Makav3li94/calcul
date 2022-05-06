@@ -56,4 +56,8 @@ class User extends Authenticatable
      * @var array
      */
 
+    public function invests(){
+        return $this->hasMany(Invest::class);
+    }
+
 }
